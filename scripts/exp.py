@@ -264,7 +264,7 @@ def run_exp(args):
                 cmd_prefix = "PYTHONPATH=. deepspeed input_to_label_and_rationale.py "
                 cmd_batch_size = f" --per_device_train_batch_size 1 --per_device_eval_batch_size 1 --gradient_accumulation_steps {per_device_train_batch_size} "
             else:
-                cmd_prefix = "PYTHONPATH=. salloc -n 1 -N 1 -t 1:00:00 -p marasovic-gpu-np -A  marasovic-gpu-np  --gres=gpu:a100:1 --mem=12G 50G python input_to_label_and_rationale.py "
+                cmd_prefix = "PYTHONPATH=. salloc -n 1 -N 1 -t 1:00:00 -p marasovic-gpu-np -A  marasovic-gpu-np  --gres=gpu:a100:1 --mem=50G python input_to_label_and_rationale.py "
                 cmd_batch_size = f" --per_device_train_batch_size {per_device_train_batch_size} --per_device_eval_batch_size 64 --gradient_accumulation_steps 1 "
 
             cmd = f'''{cmd_prefix} \
